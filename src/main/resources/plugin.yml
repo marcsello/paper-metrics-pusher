@@ -1,0 +1,7 @@
+name: MeticsPusher
+version: ${project.version}
+main: com.marcsello.meticspusher.MeticsPusher
+api-version: 1.15.2
+prefix: MetricsPusher
+authors: [Marcsello]
+description: Pushing some generic server health metrics
