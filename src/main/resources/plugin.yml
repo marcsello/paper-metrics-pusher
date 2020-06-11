@@ -1,6 +1,6 @@
-name: MeticsPusher
+name: Paper Metrics Pusher
 version: ${project.version}
-main: com.marcsello.meticspusher.MeticsPusher
+main: com.marcsello.metricspusher.MetricsPusher
 api-version: 1.15.2
 prefix: MetricsPusher
 authors: [Marcsello]
