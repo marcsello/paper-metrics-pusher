@@ -1,7 +1,8 @@
-name: Paper Metrics Pusher
+name: PaperMetricsPusher
 version: ${project.version}
 main: com.marcsello.metricspusher.MetricsPusher
-api-version: 1.15.2
-prefix: MetricsPusher
+api-version: 1.15
 authors: [Marcsello]
+load: POSTWORLD
 description: Pushing some generic server health metrics
+website: https://github.com/marcsello/paper-metrics-pusher

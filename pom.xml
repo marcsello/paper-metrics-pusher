@@ -9,7 +9,7 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>Paper Metrics Pusher</name>
+    <name>PaperMetricsPusher</name>
 
     <description>Pushing some generic server health metrics</description>
     <properties>

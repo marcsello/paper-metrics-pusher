@@ -1,0 +1,12 @@
+# Generic setup
+
+push-interval: 30000 # The pushing interval in milliseconds
+push-target: https://collector/
+log-failed-attempts: false
+
+# Setup metrics
+metrics:
+  tps: true
+  players: true
+  ram: true
+  entities: true
