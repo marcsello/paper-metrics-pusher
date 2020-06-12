@@ -16,7 +16,7 @@ public class PlayersCollector implements IMetricsCollector {
         Map<String, Object> r = new HashMap<String, Object>();
 
         for (World w: worlds) {
-            r.put(w.getName(), w.getEntityCount());
+            r.put(w.getName(), w.getPlayerCount());
         }
 
         return r;

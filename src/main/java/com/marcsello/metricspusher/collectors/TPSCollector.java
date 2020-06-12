@@ -30,6 +30,6 @@ public class TPSCollector implements IMetricsCollector {
 
     @Override
     public String getKey() {
-        return "ram";
+        return "tps";
     }
 }
