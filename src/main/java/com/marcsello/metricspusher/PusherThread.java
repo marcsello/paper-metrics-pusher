@@ -34,7 +34,7 @@ public class PusherThread extends Thread {
             collectors.add(new EntitiesCollector());
         }
 
-        http_worker = new HTTPWorker(config.getPushTarget(), config.isLogFailure());
+        http_worker = new HTTPWorker(config.getPushTarget(), config.getAuthToken(), config.isLogFailure());
 
     }
 

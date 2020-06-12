@@ -3,6 +3,7 @@
 push-interval: 30000 # The pushing interval in milliseconds
 push-target: https://collector/
 log-failed-attempts: false
+auth-token: null
 
 # Setup metrics
 metrics:

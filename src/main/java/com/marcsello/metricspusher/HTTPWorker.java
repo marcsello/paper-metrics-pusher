@@ -2,9 +2,7 @@ package com.marcsello.metricspusher;
 
 
 
-import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpContent;
-import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.http.json.JsonHttpContent;
 import com.google.api.client.json.JsonFactory;
@@ -19,15 +17,17 @@ public class HTTPWorker {
 
     private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-    private final GenericUrl target_url;
+    private final GenericUrl targetUrl;
     private final HttpRequestFactory requestFactory;
     private final boolean logFailure;
+    private final String authHeader;
 
 
-    public HTTPWorker(String target_url, boolean logFailure) {
-        this.target_url = new GenericUrl(target_url);
+    public HTTPWorker(String targetUrl, String authToken, boolean logFailure) {
+        this.targetUrl = new GenericUrl(targetUrl);
         requestFactory = (new NetHttpTransport()).createRequestFactory();
 
+        this.authHeader = authToken != null ? "Bearer " + authToken : null;
         this.logFailure = logFailure;
     }
 
@@ -36,8 +36,10 @@ public class HTTPWorker {
         HttpContent content = new JsonHttpContent(JSON_FACTORY, metrics);
 
         try {
-            requestFactory.buildPostRequest(target_url, content).execute();
-        } catch (IOException e) {
+            HttpRequest request = requestFactory.buildPostRequest(targetUrl, content);
+            request.getHeaders().setAuthorization(authHeader);
+            request.execute();
+        } catch (IOException e) { // This catches all error types, including connection failure and bad reponse codes.
             if (logFailure) {
                 Bukkit.getLogger().warning("Failed to push metrics: " + e.getMessage());
             }
