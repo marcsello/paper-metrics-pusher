@@ -11,6 +11,7 @@ public class PusherThread extends Thread {
 
     private final PusherThreadConfig config;
     private final ArrayList<IMetricsCollector> collectors = new ArrayList<>();
+    private final HTTPWorker http_worker;
 
     public PusherThread(PusherThreadConfig config) {
         this.config = config;
@@ -33,6 +34,8 @@ public class PusherThread extends Thread {
             collectors.add(new EntitiesCollector());
         }
 
+        http_worker = new HTTPWorker(config.getPushTarget(), config.isLogFailure());
+
     }
 
     @SuppressWarnings("BusyWait") // This is scheduling not busy waiting
@@ -54,8 +57,8 @@ public class PusherThread extends Thread {
                 metrics.put(c.getKey(), c.collect());
             }
 
-            // TODO: Send
-
+            // Send them
+            http_worker.sendMetrics(metrics);
 
         }
 
