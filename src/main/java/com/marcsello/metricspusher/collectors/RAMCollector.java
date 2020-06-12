@@ -12,7 +12,7 @@ public class RAMCollector implements IMetricsCollector {
     @Override
     public Map<String, Object> collect() {
 
-        Map<String, Object> r = new HashMap<String, Object>();
+        Map<String, Object> r = new HashMap<>();
 
         r.put("heap_used", memoryMXBean.getHeapMemoryUsage().getUsed());
         r.put("non_heap_used", memoryMXBean.getNonHeapMemoryUsage().getUsed());

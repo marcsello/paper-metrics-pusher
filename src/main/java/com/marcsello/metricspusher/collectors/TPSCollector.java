@@ -8,11 +8,7 @@ import java.util.Map;
 
 public class TPSCollector implements IMetricsCollector {
 
-    private Server server;
-
-    public TPSCollector() {
-        server = Bukkit.getServer(); // Keep a reference for faster access
-    }
+    private final Server server = Bukkit.getServer(); // Keep a reference for faster access
 
     @Override
     public Map<String, Object> collect() {
@@ -20,7 +16,7 @@ public class TPSCollector implements IMetricsCollector {
         double[] tps = server.getTPS();
 
         // Compose the Map
-        Map<String, Object> r = new HashMap<String, Object>();
+        Map<String, Object> r = new HashMap<>();
         r.put("1m", tps[0]);
         r.put("5m", tps[1]);
         r.put("15m", tps[2]);

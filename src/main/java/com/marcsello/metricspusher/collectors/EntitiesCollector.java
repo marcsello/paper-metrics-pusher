@@ -14,7 +14,7 @@ public class EntitiesCollector implements IMetricsCollector {
     @Override
     public Map<String, Object> collect() {
 
-        Map<String, Object> r = new HashMap<String, Object>();
+        Map<String, Object> r = new HashMap<>();
 
         for (World w: worlds) {
             r.put(w.getName(), w.getEntityCount());
